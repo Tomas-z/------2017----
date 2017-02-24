@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+#checkbox-1 {
+   display: none; 
+   visibility:hiiden;
+}
+#checkbox-2 {
+   display: none; 
+   visibility:hiiden;
+}
+ 
+#checkbox-1 + label { 
+    background-image: url(box.png) ;
+    background-position: 0px 0px;
+}
+#checkbox-2 + label { 
+    background-image: url(box.png) ;
+    background-position: 0px 25px;
+}  
+#checkbox-1:checked + label {
+    background-image: url(box.png) ;
+    background-position: 50px 0px;  
+}
+#checkbox-2:checked + label {
+    background-image: url(box.png) ;
+    background-position: 50px 25px;  
+}
+label{
+	display: inline-block;
+	width:50px;
+	height: 25px;
+    
+}
+</style>
+</head>
+ 
+<body>
+<p><input type="checkbox" id="checkbox-1"><label for="checkbox-1"></label></p>
+<p><input type="checkbox" id="checkbox-2"><label for="checkbox-2"></label></p>
+</body>
+</html>
