@@ -6,78 +6,104 @@
 }
 a{
 	text-decoration: none;
-	color: #fff;
 }
-body{
+.hover-blur{
+	position: absolute;
+	top:0;
+	left:0;
 }
-.iphone7{
-	margin: 0 auto;
+.container{
+	position: relative;
+	width: 375px;
+	height: 667px;
 	background-image: url(../img/iphone7.png);
-	width: 375px;
-	height: 667px;
-}
-.iphone7-inner{
-	text-align:center;
+	background-repeat: no-repeat; 
 	margin: 0 auto;
-	background-image: url(../img/iphone7-inner.png);
-	width: 375px;
-	height: 667px;
 }
-.iphone7-inner:hover {
+.text{
+	position: absolute;
+	top:calc(50% - 50px);
+	left: calc(50% - 100px);
+    width: 200px;
+	height: 100px;
+	line-height: 100px;
+	border-top:3px solid #fff;
+	border-right:1px solid #fff;
+	border-bottom:3px solid #fff;
+	border-left:1px solid #fff;
 	text-align:center;
-	margin: 0 auto;
-	background-image: url(../img/iphone-inner2.png);
-	width: 375px;
-	height: 667px;
-	animation: background-img 2s 1;
+	z-index: 4;
 }
-@keyframes background-img{
-	0%{
-		opacity: .8;
-	}
-	100%{
-		opacity: 1;
-	}
-}
-.iphone7-inner:hover > .welcome{
-	display: block;
-	animation: welcome 3s 1 ;
-}
-@keyframes welcome{
-	0%{
-		opacity: .5;
-	 
-		
-	}
-	100%{
-		opacity: 1;
-	}
-}
-.welcome a {
-	display: none;
-}
-.iphone7-inner:hover > .welcome a{
-	display: inline-block;
-	background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
-	        -webkit-text-fill-color: transparent;
-	        -webkit-background-clip: text;
-	        -webkit-background-size: 200% 100%;
-	        -webkit-animation: masked-animation 4s infinite linear; 
-}
- @keyframes masked-animation{
-	0%  { background-position: 0 0;
-	    }
-    100% { background-position: -100% 0;
+/*文字流光渐变 */
+@media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+     a{
+        background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-background-size: 200% 100%;
+        -webkit-animation: masked-animation 4s infinite linear;
     }
 }
-.welcome{
-	display: none;
-	position: absolute;
-	margin-top:40rem;
-	margin-left:8.5rem;
-	line-height: 6rem;
-	width: 15rem;
-	height: 6rem;
-	font-size: 2.5rem;
-	border: 3px solid #fff;
+@-webkit-keyframes masked-animation {
+    0%  { background-position: 0 0;}
+    100% { background-position: -100% 0;}
+}
+
+/* 图片模糊效果 */
+.hover-blur{
+    transition: filter,0.8s,ease-in;
+}
+.container:hover > .hover-blur{
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+}
+/* 边框闭合效果 */
+#_border{
+    border: none;
+    position: relative;
+    z-index: 3;
+}
+#_border:before,#_border:after{
+    content:" ";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 4px solid #F3F4F5;
+    border-top: 4px solid #F3F4F5;
+    border-left: 2px solid #F3F4F5;
+    border-right: 2px solid #F3F4F5;
+    transition-property: width,height,left,top;
+    transition-duration: 0.9s;
+    transition-timing-function: ease-in;
+}
+#_border:before{
+    height: 100%;
+    left: 50%;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    z-index: -4;
+}
+.container:hover > #_border:before{
+    transition-duration: 0.8s;
+    left: 0;
+    width: 100%;
+}
+#_border:after{
+    width: 100%;
+    top: 50%;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    z-index: -3;
+}
+.container:hover > #_border:after{
+    height: 100%;
+    top: 0;
+}
+/* 悬停显示 */
+.text{
+	opacity: 0
+}
+.container:hover > .text{
+	opacity: 1;
 }
